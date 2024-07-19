@@ -51,6 +51,13 @@ function setGame() {
             tile.id = r.toString() + "-" + c.toString();
             if(board[r][c] != "-"){
                 tile.innerText = board[r][c];
+                tile.classList.add("tile-start");
+            }
+            if(r == 2 ||r == 5){
+                tile.classList.add("horizontal-line");
+            }
+            if(c == 2 || c == 5){
+                tile.classList.add("vertical-line");
             }
             tile.addEventListener("click", selectTile);
             tile.classList.add("tile");
@@ -73,5 +80,11 @@ function selectTile(){
             return;
         }
         this.innerText = numSelected.id;
+
+
+        // "0-0" "0-1" .. "3-1"
+        let coords = this.id.split("-"); // ["0", "0"]
+        let r = parseInt(coords[0]);
+        let c = parseInt(coords[1]);
     }
 }
